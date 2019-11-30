@@ -35,3 +35,23 @@ global class MyBatchClass implements Database.Batchable<sObject> {
     }    
 }
 ```
+
+## Invoking a Batch Class
+Instantiate it and then call ```Database.executeBatch``` with the instance:
+```
+MyBatchClass myBatchObject = new MyBatchClass(); 
+Id batchId = Database.executeBatch(myBatchObject);
+```
+
+Optional: pass in ```scope``` parameter to specify the number of records that should be passed into the execute method for each batch. TIP limit this batch size if running into governor limits.
+```
+Id batchId = Database.executeBatch(myBatchObject, 100);
+```
+
+Track job progress: Each batch Apex invocation creates an AsynceApexJob record to view progress via SOQL or manage job in the Apex Job Queue.
+```
+AsyncApexJob job = [SELECT Id, Status, JobItemsProcessed, TotalJobItems, NumberOfErrors FROM AsyncApexJob WHERE ID = :batchId ];
+```
+
+
+
