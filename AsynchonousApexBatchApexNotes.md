@@ -22,7 +22,8 @@ This method takes the following:
 3. Finish: execute post-processing operations (for example, sending an email) and is called once after all batchesare processed.
 
 Batch Apex class template:
-```global class MyBatchClass implements Database.Batchable<sObject> {
+```
+global class MyBatchClass implements Database.Batchable<sObject> {
     global (Database.QueryLocator | Iterable<sObject>) start(Database.BatchableContext bc) {
         // collect the batches of records or objects to be passed to execute
     }
@@ -32,6 +33,5 @@ Batch Apex class template:
     global void finish(Database.BatchableContext bc){
         // execute any post-processing operations
     }    
-}```
-
-test
+}
+```
