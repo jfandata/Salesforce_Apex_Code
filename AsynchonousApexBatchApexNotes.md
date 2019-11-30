@@ -10,3 +10,5 @@ Advantages:
 
 # Batch Apex Syntax
 
+Implement ```Database.Batchable``` interface and include three methods
+1. Start: collect the records or objects to be passed to the interface method execute
