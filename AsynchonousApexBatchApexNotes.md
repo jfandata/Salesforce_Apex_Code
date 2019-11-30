@@ -53,5 +53,13 @@ Track job progress: Each batch Apex invocation creates an AsynceApexJob record t
 AsyncApexJob job = [SELECT Id, Status, JobItemsProcessed, TotalJobItems, NumberOfErrors FROM AsyncApexJob WHERE ID = :batchId ];
 ```
 
+## Using State in Batch Apex
+Stateless - each execution of a batch Apex job is considered a discrete transaction. 
+Example: a batch Apex job that contains 1,000 records and uses the default batch size is considered five transactions of 200 records each.
+
+```Database.Stateful```
+If specified in the class definition, can maintain state across all transactions. Only instance member variables retain their values between transactions. Maintaining state is useful for counting or summarizing records as they are processed. 
+
+#### Example: Update contact records in batch job and keep track of the total records affected and include it in the notification email.
 
 
