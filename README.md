@@ -1,3 +1,3 @@
-# Salesforce_Apex_Code
+# Salesforce Apex Code
 
 This directory holds sample Apex code from learning videos and trailheads.
